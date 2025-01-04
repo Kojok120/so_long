@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 16:07:12 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 18:32:47 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 19:41:01 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,7 @@ void	validate_map(t_game *game)
 		exit_error("Invalid map surround", game);
 	if (!validate_map_element(game))
 		exit_error("Invalid map elements", game);
+	if (game->map_width > 91 || game->map_height > 51)
+		exit_error("Map is too big", game);
 	validate_reachable(game);
 }
