@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:37:23 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 13:30:47 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:39:16 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_game
 	int		player_x;
 	int		player_y;
 	int		collectibles;
+	int		exit_x;
+	int		exit_y;
 	int		moves;
 	void	*player_img;
 	void	*wall_img;
@@ -48,6 +50,8 @@ typedef struct s_game
 	void	*floor_img;
 }			t_game;
 
+void		validate_map(t_game *game);
+void		validate_reachable(t_game *game);
 int			read_map(t_game *game, char *filename);
 void		draw_map(t_game *game);
 int			handle_keys(int keycode, t_game *game);
