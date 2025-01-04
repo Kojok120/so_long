@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   game_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 14:16:45 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/02 15:57:43 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 12:53:26 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,16 @@ void	clean_up(t_game *game)
 		mlx_destroy_image(game->mlx, game->floor_img);
 }
 
-void	error_exit(char *message, t_game *game)
+void	exit_error(char *message, t_game *game)
 {
 	ft_printf("Error: %e\n", message);
 	clean_up(game);
 	exit(1);
 }
 
-void	close_window(t_game *game)
+int	exit_game(t_game *game)
 {
 	clean_up(game);
 	exit(0);
+	return (0);
 }

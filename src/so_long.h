@@ -6,14 +6,14 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:37:23 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/02 15:53:15 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 13:30:47 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <fcntl.h>
 # include <mlx.h>
 # include <stdio.h>
@@ -53,7 +53,7 @@ void		draw_map(t_game *game);
 int			handle_keys(int keycode, t_game *game);
 void		init_game(t_game *game);
 void		clean_up(t_game *game);
-void		error_exit(char *message, t_game *game);
-void		close_window(t_game *game);
+void		exit_error(char *message, t_game *game);
+int			exit_game(t_game *game);
 
 #endif
