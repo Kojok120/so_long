@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:30:29 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 19:18:09 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 19:44:01 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	find_elements(t_game *game)
 	int	x;
 
 	y = 0;
-	game->collectibles = 0;
 	while (y < game->map_height)
 	{
 		x = 0;

@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 14:16:45 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 19:29:25 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 19:44:22 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	safe_destroy_image(void *mlx_ptr, void **img_ptr)
 	}
 }
 
-void free_map(char **map)
+void	free_map(char **map)
 {
 	int	i;
 
