@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:30:21 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 17:40:21 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:28:17 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ int	read_map(t_game *game, char *filename)
 	char	*temp;
 
 	height = get_map_height(filename);
-	if (height == 0 || !allocate_map(game, height))
-		return (0);
 	fd = open(filename, O_RDONLY);
-	if (fd < 0)
+	if (height == 0 || !allocate_map(game, height) || fd < 0)
 		return (0);
 	height = 0;
-	while ((line = get_next_line(fd)))
+	while (1)
 	{
-		if ((temp = ft_strchr(line, '\n')))
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		temp = ft_strchr(line, '\n');
+		if (temp)
 			*temp = '\0';
 		game->map[height] = ft_strdup(line);
-		if (height == 0)
-			game->map_width = ft_strlen(line);
 		free(line);
 		height++;
 	}

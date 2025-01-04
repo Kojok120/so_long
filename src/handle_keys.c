@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:47:43 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 16:04:51 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:36:24 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	handle_keys(int keycode, t_game *game)
 	if (game->map[new_y][new_x] != '1' && validate_keys(keycode))
 	{
 		handle_collectible(game, new_x, new_y);
-		ft_printf("Collectibles: %d\n", game->collectibles);
 		update_player_position(game, new_x, new_y);
 	}
 	return (0);

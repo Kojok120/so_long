@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:30:29 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 18:05:34 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:17:49 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,10 @@ int	main(int argc, char **argv)
 	if (!read_map(&game, argv[1]))
 		exit_error("Error reading map", &game);
 	find_elements(&game);
-	ft_printf("validate map\n"); //デバッグ用
 	validate_map(&game);
-	ft_printf("draw map\n"); //デバッグ用
 	draw_map(&game);
-	ft_printf("mlx key hook\n"); //デバッグ用
 	mlx_key_hook(game.win, handle_keys, &game);
-	ft_printf("mlx hook\n"); //デバッグ用
 	mlx_hook(game.win, 17, 0L, exit_game, &game);
-	ft_printf("mlx loop\n"); //デバッグ用
 	mlx_loop(game.mlx);
 	return (0);
 }

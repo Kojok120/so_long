@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 16:07:12 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 16:43:00 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:32:47 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	validate_map_shape(t_game *game)
 	return (1);
 }
 
-int validate_map_chars(t_game *game)
+int	validate_map_chars(t_game *game)
 {
 	int	y;
 	int	x;
@@ -85,12 +85,10 @@ int	validate_map_element(t_game *game)
 	int	x;
 	int	player;
 	int	exit;
-	int	collectible;
 
 	y = 0;
 	player = 0;
 	exit = 0;
-	collectible = 0;
 	while (y < game->map_height)
 	{
 		x = 0;
@@ -100,13 +98,11 @@ int	validate_map_element(t_game *game)
 				player++;
 			if (game->map[y][x] == 'E')
 				exit++;
-			if (game->map[y][x] == 'C')
-				collectible++;
 			x++;
 		}
 		y++;
 	}
-	if (player != 1 || exit != 1 || collectible == 0)
+	if (player != 1 || exit != 1 || game->collectibles == 0)
 		return (0);
 	return (1);
 }
