@@ -6,13 +6,13 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:30:29 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 18:03:27 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:05:34 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void find_elements(t_game *game)
+void	find_elements(t_game *game)
 {
 	int	y;
 	int	x;
