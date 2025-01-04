@@ -6,38 +6,36 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 14:16:45 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 12:53:26 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 17:34:16 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	safe_destroy_image(void *mlx_ptr, void **img_ptr)
+{
+	if (mlx_ptr && *img_ptr)
+	{
+		mlx_destroy_image(mlx_ptr, *img_ptr);
+		*img_ptr = NULL;
+	}
+}
+
 void	clean_up(t_game *game)
 {
-	int	i;
-
-	if (game->map)
-	{
-		i = 0;
-		while (game->map[i])
-		{
-			free(game->map[i]);
-			i++;
-		}
-		free(game->map);
-	}
 	if (game->mlx && game->win)
 		mlx_destroy_window(game->mlx, game->win);
-	if (game->player_img)
-		mlx_destroy_image(game->mlx, game->player_img);
-	if (game->wall_img)
-		mlx_destroy_image(game->mlx, game->wall_img);
-	if (game->collectible_img)
-		mlx_destroy_image(game->mlx, game->collectible_img);
-	if (game->exit_img)
-		mlx_destroy_image(game->mlx, game->exit_img);
-	if (game->floor_img)
-		mlx_destroy_image(game->mlx, game->floor_img);
+	safe_destroy_image(game->mlx, (void **)&game->player_img);
+	safe_destroy_image(game->mlx, (void **)&game->wall_img);
+	safe_destroy_image(game->mlx, (void **)&game->collectible_img);
+	safe_destroy_image(game->mlx, (void **)&game->exit_img);
+	safe_destroy_image(game->mlx, (void **)&game->floor_img);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+		game->mlx = NULL;
+	}
 }
 
 void	exit_error(char *message, t_game *game)
