@@ -6,32 +6,39 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:30:29 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 15:36:12 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 17:14:29 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int count_collectibles(t_game *game)
+void find_elements(t_game *game)
 {
 	int	y;
 	int	x;
-	int	count;
 
 	y = 0;
-	count = 0;
 	while (y < game->map_height)
 	{
 		x = 0;
 		while (x < game->map_width)
 		{
 			if (game->map[y][x] == 'C')
-				count++;
+				game->collectibles++;
+			if (game->map[y][x] == 'P')
+			{
+				game->player_x = x;
+				game->player_y = y;
+			}
+			if (game->map[y][x] == 'E')
+			{
+				game->exit_x = x;
+				game->exit_y = y;
+			}
 			x++;
 		}
 		y++;
 	}
-	return (count);
 }
 
 int	main(int argc, char **argv)
@@ -46,7 +53,9 @@ int	main(int argc, char **argv)
 	init_game(&game);
 	if (!read_map(&game, argv[1]))
 		exit_error("Error reading map", &game);
-	game.collectibles = count_collectibles(&game);
+	find_elements(&game);
+	ft_printf("validate map\n"); //デバッグ用
+	validate_map(&game);
 	ft_printf("draw map\n"); //デバッグ用
 	draw_map(&game);
 	ft_printf("mlx key hook\n"); //デバッグ用
