@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:30:29 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 17:14:29 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:03:27 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void find_elements(t_game *game)
 	while (y < game->map_height)
 	{
 		x = 0;
-		while (x < game->map_width)
+		while (x < (int)ft_strlen(game->map[y]))
 		{
 			if (game->map[y][x] == 'C')
 				game->collectibles++;
