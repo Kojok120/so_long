@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:37:23 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 16:39:16 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 19:30:20 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define WINDOW_WIDTH 800
-# define WINDOW_HEIGHT 600
-# define TILE_SIZE 32
+# define TILE_SIZE 42
 
 # define KEY_A 0x61
 # define KEY_W 0x77
@@ -56,6 +54,8 @@ int			read_map(t_game *game, char *filename);
 void		draw_map(t_game *game);
 int			handle_keys(int keycode, t_game *game);
 void		init_game(t_game *game);
+void		init_window(t_game *game);
+void		free_map(char **map);
 void		clean_up(t_game *game);
 void		exit_error(char *message, t_game *game);
 int			exit_game(t_game *game);

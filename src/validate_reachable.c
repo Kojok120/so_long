@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 16:23:15 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 18:39:43 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 19:29:55 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,6 @@ static void	flood_fill(char **map, int x, int y, t_game *game)
 	flood_fill(map, x, y + 1, game);
 	flood_fill(map, x - 1, y, game);
 	flood_fill(map, x + 1, y, game);
-}
-
-void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
 }
 
 void	validate_reachable(t_game *game)
