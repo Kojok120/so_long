@@ -6,7 +6,7 @@
 #    By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/29 22:03:04 by kokamoto          #+#    #+#              #
-#    Updated: 2025/01/04 12:50:15 by kokamoto         ###   ########.fr        #
+#    Updated: 2025/01/04 16:38:51 by kokamoto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ SRC_FILES = game_exit.c \
            init.c \
            main.c \
            map_draw.c \
-           map_read.c
+           map_read.c \
+		   validate_map.c \
+		   validate_reachable.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
