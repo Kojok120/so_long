@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:30:21 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/02 13:39:33 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 13:20:00 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	read_map(t_game *game, char *filename)
 	char	*temp;
 
 	height = get_map_height(filename);
-	if (height == 0 || !allocate_map(game, height))
+	if (height == 0 || !allocate_map(game, height)) //ここのエラーハンドリングは別でまとめる
 		return (0);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
@@ -56,11 +56,11 @@ int	read_map(t_game *game, char *filename)
 	height = 0;
 	while ((line = get_next_line(fd)))
 	{
-		if ((temp = strchr(line, '\n')))
+		if ((temp = ft_strchr(line, '\n')))
 			*temp = '\0';
-		game->map[height] = strdup(line);
+		game->map[height] = ft_strdup(line);
 		if (height == 0)
-			game->map_width = strlen(line);
+			game->map_width = ft_strlen(line);
 		free(line);
 		height++;
 	}
