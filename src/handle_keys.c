@@ -6,17 +6,11 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:47:43 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/02 13:53:11 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 12:52:01 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static void	handle_exit(t_game *game)
-{
-	mlx_destroy_window(game->mlx, game->win);
-	exit(0);
-}
 
 static void	update_player_position(t_game *game, int new_x, int new_y)
 {
@@ -40,11 +34,11 @@ static void	handle_collectible(t_game *game, int x, int y)
 	if (game->map[y][x] == 'E' && game->collectibles == 0)
 	{
 		printf("Congratulations! You won in %d moves!\n", game->moves + 1);
-		handle_exit(game);
+		exit_game(game);
 	}
 }
 
-static void	update_position_keys(t_game *game, int keycode, int *x, int *y)
+static void	update_position(int keycode, int *x, int *y)
 {
 	if (keycode == KEY_A)
 		(*x)--;
@@ -64,8 +58,8 @@ int	handle_keys(int keycode, t_game *game)
 	new_x = game->player_x;
 	new_y = game->player_y;
 	if (keycode == KEY_ESC)
-		handle_exit(game);
-	update_position_keys(game, keycode, &new_x, &new_y);
+		exit_game(game);
+	update_position(keycode, &new_x, &new_y);
 	if (game->map[new_y][new_x] != '1')
 	{
 		handle_collectible(game, new_x, new_y);
