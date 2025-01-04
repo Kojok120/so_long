@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:30:03 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 13:25:16 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:34:11 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	draw_tile(t_game *game, int x, int y)
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->collectible_img, x
 			* TILE_SIZE, y * TILE_SIZE);
-		game->collectibles++;
 	}
 	if (game->map[y][x] == 'E')
 		mlx_put_image_to_window(game->mlx, game->win, game->exit_img, x
@@ -43,15 +42,11 @@ void	draw_map(t_game *game)
 	int	x;
 
 	y = 0;
-	ft_printf("map height: %d\n", game->map_height);
-	ft_printf("map width: %d\n", game->map_width);
-	ft_printf("floor img: %p\n", game->floor_img);
 	while (y < game->map_height)
 	{
 		x = 0;
 		while (x < game->map_width)
 		{
-			ft_printf("%c", game->map[y][x]);
 			draw_tile(game, x, y);
 			x++;
 		}
