@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:30:03 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 15:34:11 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 17:02:04 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ static void	draw_tile(t_game *game, int x, int y)
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->player_img, x
 			* TILE_SIZE, y * TILE_SIZE);
-		game->player_x = x;
-		game->player_y = y;
 	}
 	if (game->map[y][x] == 'C')
 	{
@@ -47,6 +45,7 @@ void	draw_map(t_game *game)
 		x = 0;
 		while (x < game->map_width)
 		{
+			// ft_printf("draw tile %d %d\n", x, y); //デバッグ用
 			draw_tile(game, x, y);
 			x++;
 		}
