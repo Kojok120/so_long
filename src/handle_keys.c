@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:47:43 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 15:38:01 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 16:04:51 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static void	update_player_position(t_game *game, int new_x, int new_y)
 {
-	game->map[game->player_y][game->player_x] = '0';
+	if (game->exit_x == game->player_x && game->exit_y == game->player_y)
+		game->map[game->player_y][game->player_x] = 'E';
+	else
+		game->map[game->player_y][game->player_x] = '0';
 	game->player_x = new_x;
 	game->player_y = new_y;
 	game->map[new_y][new_x] = 'P';
@@ -50,9 +53,10 @@ static void	update_position(int keycode, int *x, int *y)
 		(*y)++;
 }
 
-int validate_keys(int keycode)
+int	validate_keys(int keycode)
 {
-	if (keycode == KEY_A || keycode == KEY_D || keycode == KEY_W || keycode == KEY_S)
+	if (keycode == KEY_A || keycode == KEY_D || keycode == KEY_W
+		|| keycode == KEY_S)
 		return (1);
 	return (0);
 }
