@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   map_draw.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:30:03 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/02 13:45:23 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 13:25:16 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,15 @@ void	draw_map(t_game *game)
 	int	x;
 
 	y = 0;
+	ft_printf("map height: %d\n", game->map_height);
+	ft_printf("map width: %d\n", game->map_width);
+	ft_printf("floor img: %p\n", game->floor_img);
 	while (y < game->map_height)
 	{
 		x = 0;
 		while (x < game->map_width)
 		{
+			ft_printf("%c", game->map[y][x]);
 			draw_tile(game, x, y);
 			x++;
 		}
