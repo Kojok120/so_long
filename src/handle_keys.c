@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:47:43 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 12:52:01 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:38:01 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	update_player_position(t_game *game, int new_x, int new_y)
 	game->moves++;
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
-	printf("Moves: %d\n", game->moves);
+	ft_printf("Moves: %d\n", game->moves);
 }
 
 static void	handle_collectible(t_game *game, int x, int y)
@@ -33,7 +33,7 @@ static void	handle_collectible(t_game *game, int x, int y)
 	}
 	if (game->map[y][x] == 'E' && game->collectibles == 0)
 	{
-		printf("Congratulations! You won in %d moves!\n", game->moves + 1);
+		ft_printf("Congratulations! You won in %d moves!\n", game->moves + 1);
 		exit_game(game);
 	}
 }
@@ -50,6 +50,13 @@ static void	update_position(int keycode, int *x, int *y)
 		(*y)++;
 }
 
+int validate_keys(int keycode)
+{
+	if (keycode == KEY_A || keycode == KEY_D || keycode == KEY_W || keycode == KEY_S)
+		return (1);
+	return (0);
+}
+
 int	handle_keys(int keycode, t_game *game)
 {
 	int	new_x;
@@ -60,9 +67,10 @@ int	handle_keys(int keycode, t_game *game)
 	if (keycode == KEY_ESC)
 		exit_game(game);
 	update_position(keycode, &new_x, &new_y);
-	if (game->map[new_y][new_x] != '1')
+	if (game->map[new_y][new_x] != '1' && validate_keys(keycode))
 	{
 		handle_collectible(game, new_x, new_y);
+		ft_printf("Collectibles: %d\n", game->collectibles);
 		update_player_position(game, new_x, new_y);
 	}
 	return (0);
