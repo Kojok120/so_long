@@ -1,3 +1,5 @@
+xdpyinfo | grep "dimensions" | awk '{ print $2 }'
+
 echo "-------- Error1: no argument -----------"
 valgrind --leak-check=full -q ./so_long
 
@@ -30,6 +32,9 @@ valgrind --leak-check=full -q ./so_long maps/e_not_rectangle.ber
 
 echo "-------- Error11: unreachable -----------"
 valgrind --leak-check=full -q ./so_long maps/e_unreachable.ber
+
+echo "-------- Error12: invalid filename extention -----------"
+valgrind --leak-check=full -q ./so_long maps/e_invalid_extention.txt
 
 # echo "-------- Playable map-----------"
 # valgrind --leak-check=full -q ./so_long maps/map1.ber
