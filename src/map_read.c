@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:30:21 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 13:20:00 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:55:30 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	read_map(t_game *game, char *filename)
 	char	*line;
 	char	*temp;
 
-	height = get_map_height(filename);
+	height = get_map_height(filename); //ここも別でまとめたい
 	if (height == 0 || !allocate_map(game, height)) //ここのエラーハンドリングは別でまとめる
 		return (0);
 	fd = open(filename, O_RDONLY);
