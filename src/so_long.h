@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:37:23 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/05 11:25:12 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/05 21:19:37 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <unistd.h>
 
 # define TILE_SIZE 50
+# define MAP_HEIGHT_MAX 76
+# define MAP_WIDTH_MAX 43
 
 # define KEY_A 0x61
 # define KEY_W 0x77
