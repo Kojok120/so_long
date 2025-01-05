@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:47:43 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/05 11:33:00 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:11:11 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ static void	update_player_position(t_game *game, int new_x, int new_y)
 	game->moves++;
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
+	if (game->moves == INT_MAX - 1)
+	{
+		ft_printf("もう歩けないよ。。。。\nゲームオーバー\n");
+		exit_game(game);
+	}
 	ft_printf("%d歩目！有酸素運動は筋肉を分解してしまうぞ！\n", game->moves);
 }
 
