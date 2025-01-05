@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:37:23 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 19:30:20 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:25:12 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define TILE_SIZE 42
+# define TILE_SIZE 50
 
 # define KEY_A 0x61
 # define KEY_W 0x77

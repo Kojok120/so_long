@@ -6,7 +6,7 @@
 /*   By: kokamoto <kojokamo120@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:47:43 by kokamoto          #+#    #+#             */
-/*   Updated: 2025/01/04 18:36:24 by kokamoto         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:33:00 by kokamoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	update_player_position(t_game *game, int new_x, int new_y)
 	game->moves++;
 	mlx_clear_window(game->mlx, game->win);
 	draw_map(game);
-	ft_printf("Moves: %d\n", game->moves);
+	ft_printf("%d歩目！有酸素運動は筋肉を分解してしまうぞ！\n", game->moves);
 }
 
 static void	handle_collectible(t_game *game, int x, int y)
@@ -36,7 +36,7 @@ static void	handle_collectible(t_game *game, int x, int y)
 	}
 	if (game->map[y][x] == 'E' && game->collectibles == 0)
 	{
-		ft_printf("Congratulations! You won in %d moves!\n", game->moves + 1);
+		ft_printf("%d歩でゴール！おめでとう、これで君もマッチョだ！\n", game->moves + 1);
 		exit_game(game);
 	}
 }
